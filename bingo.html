@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bingo.css">
+  <title>bingo</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
+  <!-- <script src="bingo.js" defer></script> -->
+  <script src="bingo.js" defer></script>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td data-row="1" data-col="1" class="number"></td>
+      <td data-row="1" data-col="2" class="number"></td>
+      <td data-row="1" data-col="3" class="number"></td>
+      <td data-row="1" data-col="4" class="number"></td>
+      <td data-row="1" data-col="5" class="number"></td>
+    </tr>
+    <tr>
+      <td data-row="2" data-col="1" class="number"></td>
+      <td data-row="2" data-col="2" class="number"></td>
+      <td data-row="2" data-col="3" class="number"></td>
+      <td data-row="2" data-col="4" class="number"></td>
+      <td data-row="2" data-col="5" class="number"></td>
+    </tr>
+    <tr>
+      <td data-row="3" data-col="1" class="number"></td>
+      <td data-row="3" data-col="2" class="number"></td>
+      <td data-row="3" data-col="3" class="number"></td>
+      <td data-row="3" data-col="4" class="number"></td>
+      <td data-row="3" data-col="5" class="number"></td>
+    </tr>
+    <tr>
+      <td data-row="4" data-col="1" class="number"></td>
+      <td data-row="4" data-col="2" class="number"></td>
+      <td data-row="4" data-col="3" class="number"></td>
+      <td data-row="4" data-col="4" class="number"></td>
+      <td data-row="4" data-col="5" class="number"></td>
+    </tr>
+    <tr>
+      <td data-row="5" data-col="1" class="number"></td>
+      <td data-row="5" data-col="2" class="number"></td>
+      <td data-row="5" data-col="3" class="number"></td>
+      <td data-row="5" data-col="4" class="number"></td>
+      <td data-row="5" data-col="5" class="number"></td>
+    </tr>
+  </table>
+  <button class="start">びんご！！</button>
+  <input type="text" name="" id="showed_numbers" readonly>
+  <button class="reset">りせっと！！</button>
+  <p>
+    今まで選ばれた数
+  </p>
+  <textarea name="" id="diced-numbers" cols="30" rows="10" readonly></textarea>
+  <p>現在<span class="try-cnt">0</span>回目</p>
+  <p>現在<span class="hit-cnt">0</span>個ヒット！！！</p>(<span class="hit-rate">0</span>%)
+
+  <p class="text-info py-1">
+    現在のリーチ: <span class="reach-cnt">0</span>個
+  </p>
+
+
+  <p class="bingo"></p>
+
+</body>
+
+</html>
