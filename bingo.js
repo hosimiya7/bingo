@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
   const bingo = new Bingo
-  bingo.initializeDashboard()
+  bingo.initializeDashboard(1)
+  bingo.initializeDashboard(2)
 
   $(".start").on("click", function () {
     bingo.roll()
@@ -17,11 +18,10 @@ class Bingo {
 
   unselected_numbers = []
   selected_number = []
-  hit_sheet = []
+  hit_sheet1 = []
+  hit_sheet2 = []
   cur_count = 0
   hit_count = 0
-  hit_sheet = []
-
 
   constructor() {
     this.initializeUnselectedNumbers()
@@ -29,7 +29,6 @@ class Bingo {
 
   getRandomNumber = () => {
     const selected_number = this.unselected_numbers[Math.floor(Math.random() * this.unselected_numbers.length)]
-
     this.removeNumber(selected_number)
     return selected_number
   }
@@ -39,8 +38,6 @@ class Bingo {
     this.unselected_numbers.splice(index, 1)
     this.selected_numbers.push(num)
   }
-
-
 
   initializeUnselectedNumbers = () => {
     this.unselected_numbers = []
@@ -78,18 +75,22 @@ class Bingo {
     }
   }
 
-  initializeDashboard = () => {
+  initializeDashboard = (hit_sheet_num) => {
+    const hit_sheet = hit_sheet_num === 1 ? this.hit_sheet1 : this.hit_sheet2 
 
     for (let row = 1; row <= 5; row++) {
-      this.hit_sheet[row - 1] = []
+      hit_sheet[row - 1] = []
       for (let col = 1; col <= 5; col++) {
         const selected_number = this.getRandomNumber()
-
-        $(`[data-row=${row}][data-col=${col}]`).text(selected_number).attr('data-value', selected_number)
-        this.hit_sheet[row - 1][col - 1] = 0
+        $(`.bingo${hit_sheet_num} [data-row=${row}][data-col=${col}]`).text(selected_number).attr('data-value', selected_number)
+        hit_sheet[row - 1][col - 1] = 0
       }
     }
-
+    if(hit_sheet_num === 1){
+      this.hit_sheet1 = hit_sheet
+    }else{
+      this.hit_sheet2 = hit_sheet
+    }
     // 振り直すためにリセット
     this.initializeUnselectedNumbers()
   }
@@ -129,13 +130,14 @@ class Bingo {
 
   }
 
-  countLineSum = (judgeline) => {
+  countLineSum = (judgeline, hit_sheet_num) => {
     let judged_count = 0
     let upper_left_count = 0
     let upper_right_count = 0
+    const hit_sheet = hit_sheet_num === 1 ? this.hit_sheet1 : this.hit_sheet2
     for (let row = 0; row < 5; row++) {
       // 行
-      const row_total = this.hit_sheet[row].reduce((sum, element) => {
+      const row_total = hit_sheet[row].reduce((sum, element) => {
         return sum + element;
       }, 0);
       if (row_total === judgeline) {
@@ -144,19 +146,19 @@ class Bingo {
       // 列
       let col_total = 0
       for (let col = 0; col < 5; col++) {
-        col_total += this.hit_sheet[col][row]
+        col_total += hit_sheet[col][row]
       }
       if (col_total === judgeline) {
         judged_count++
       }
 
       // 斜め
-      upper_left_count += this.hit_sheet[row][row]
+      upper_left_count += hit_sheet[row][row]
 
       if (upper_left_count === judgeline) {
         judged_count++
       }
-      upper_right_count += this.hit_sheet[row][4 - row]
+      upper_right_count += hit_sheet[row][4 - row]
       if (upper_right_count === judgeline) {
         judged_count++
       }
@@ -166,7 +168,8 @@ class Bingo {
   }
 
 
-  roll = function () {
+  roll = function (hit_sheet_num) {
+    const hit_sheet = hit_sheet_num === 1 ? this.hit_sheet1 : this.hit_sheet2
     this.cur_count++
     const number = this.getRandomNumber()
 
@@ -179,7 +182,7 @@ class Bingo {
       $element.addClass("hit-number")
       const row_idx = $element.data('row') - 1
       const col_idx = $element.data('col') - 1
-      this.hit_sheet[row_idx][col_idx] = 1
+      hit_sheet[row_idx][col_idx] = 1
 
     }
 
@@ -195,7 +198,8 @@ class Bingo {
   reset = function () {
     this.initialize()
 
-    this.initializeDashboard()
+    this.initializeDashboard(1)
+    this.initializeDashboard(2)
   }
 
 }

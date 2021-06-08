@@ -13,59 +13,120 @@
 </head>
 
 <body>
-  <table>
-    <tr>
-      <td data-row="1" data-col="1" class="number"></td>
-      <td data-row="1" data-col="2" class="number"></td>
-      <td data-row="1" data-col="3" class="number"></td>
-      <td data-row="1" data-col="4" class="number"></td>
-      <td data-row="1" data-col="5" class="number"></td>
-    </tr>
-    <tr>
-      <td data-row="2" data-col="1" class="number"></td>
-      <td data-row="2" data-col="2" class="number"></td>
-      <td data-row="2" data-col="3" class="number"></td>
-      <td data-row="2" data-col="4" class="number"></td>
-      <td data-row="2" data-col="5" class="number"></td>
-    </tr>
-    <tr>
-      <td data-row="3" data-col="1" class="number"></td>
-      <td data-row="3" data-col="2" class="number"></td>
-      <td data-row="3" data-col="3" class="number"></td>
-      <td data-row="3" data-col="4" class="number"></td>
-      <td data-row="3" data-col="5" class="number"></td>
-    </tr>
-    <tr>
-      <td data-row="4" data-col="1" class="number"></td>
-      <td data-row="4" data-col="2" class="number"></td>
-      <td data-row="4" data-col="3" class="number"></td>
-      <td data-row="4" data-col="4" class="number"></td>
-      <td data-row="4" data-col="5" class="number"></td>
-    </tr>
-    <tr>
-      <td data-row="5" data-col="1" class="number"></td>
-      <td data-row="5" data-col="2" class="number"></td>
-      <td data-row="5" data-col="3" class="number"></td>
-      <td data-row="5" data-col="4" class="number"></td>
-      <td data-row="5" data-col="5" class="number"></td>
-    </tr>
-  </table>
-  <button class="start">びんご！！</button>
-  <input type="text" name="" id="showed_numbers" readonly>
-  <button class="reset">りせっと！！</button>
-  <p>
-    今まで選ばれた数
-  </p>
-  <textarea name="" id="diced-numbers" cols="30" rows="10" readonly></textarea>
-  <p>現在<span class="try-cnt">0</span>回目</p>
-  <p>現在<span class="hit-cnt">0</span>個ヒット！！！</p>(<span class="hit-rate">0</span>%)
+  <div class="flex">
 
-  <p class="text-info py-1">
-    現在のリーチ: <span class="reach-cnt">0</span>個
-  </p>
+    <div class="bingo1">
+      <table>
+        <tr>
+          <td data-row="1" data-col="1" class="number"></td>
+          <td data-row="1" data-col="2" class="number"></td>
+          <td data-row="1" data-col="3" class="number"></td>
+          <td data-row="1" data-col="4" class="number"></td>
+          <td data-row="1" data-col="5" class="number"></td>
+        </tr>
+        <tr>
+          <td data-row="2" data-col="1" class="number"></td>
+          <td data-row="2" data-col="2" class="number"></td>
+          <td data-row="2" data-col="3" class="number"></td>
+          <td data-row="2" data-col="4" class="number"></td>
+          <td data-row="2" data-col="5" class="number"></td>
+        </tr>
+        <tr>
+          <td data-row="3" data-col="1" class="number"></td>
+          <td data-row="3" data-col="2" class="number"></td>
+          <td data-row="3" data-col="3" class="number"></td>
+          <td data-row="3" data-col="4" class="number"></td>
+          <td data-row="3" data-col="5" class="number"></td>
+        </tr>
+        <tr>
+          <td data-row="4" data-col="1" class="number"></td>
+          <td data-row="4" data-col="2" class="number"></td>
+          <td data-row="4" data-col="3" class="number"></td>
+          <td data-row="4" data-col="4" class="number"></td>
+          <td data-row="4" data-col="5" class="number"></td>
+        </tr>
+        <tr>
+          <td data-row="5" data-col="1" class="number"></td>
+          <td data-row="5" data-col="2" class="number"></td>
+          <td data-row="5" data-col="3" class="number"></td>
+          <td data-row="5" data-col="4" class="number"></td>
+          <td data-row="5" data-col="5" class="number"></td>
+        </tr>
+      </table>
+      <button class="start">びんご！！</button>
+      <input type="text" name="" id="showed_numbers" readonly>
+      <button class="reset">りせっと！！</button>
+      <p>
+        今まで選ばれた数
+      </p>
+      <textarea name="" id="diced-numbers" cols="30" rows="10" readonly></textarea>
+      <p>現在<span class="try-cnt">0</span>回目</p>
+      <p>現在<span class="hit-cnt">0</span>個ヒット！！！</p>(<span class="hit-rate">0</span>%)
+    
+      <p class="text-info py-1">
+        現在のリーチ: <span class="reach-cnt">0</span>個
+      </p>
+    
+    
+      <p class="bingo"></p>
+    </div>
+    <div class="bingo2">
+      <table>
+        <tr>
+          <td data-row="1" data-col="1" class="number"></td>
+          <td data-row="1" data-col="2" class="number"></td>
+          <td data-row="1" data-col="3" class="number"></td>
+          <td data-row="1" data-col="4" class="number"></td>
+          <td data-row="1" data-col="5" class="number"></td>
+        </tr>
+        <tr>
+          <td data-row="2" data-col="1" class="number"></td>
+          <td data-row="2" data-col="2" class="number"></td>
+          <td data-row="2" data-col="3" class="number"></td>
+          <td data-row="2" data-col="4" class="number"></td>
+          <td data-row="2" data-col="5" class="number"></td>
+        </tr>
+        <tr>
+          <td data-row="3" data-col="1" class="number"></td>
+          <td data-row="3" data-col="2" class="number"></td>
+          <td data-row="3" data-col="3" class="number"></td>
+          <td data-row="3" data-col="4" class="number"></td>
+          <td data-row="3" data-col="5" class="number"></td>
+        </tr>
+        <tr>
+          <td data-row="4" data-col="1" class="number"></td>
+          <td data-row="4" data-col="2" class="number"></td>
+          <td data-row="4" data-col="3" class="number"></td>
+          <td data-row="4" data-col="4" class="number"></td>
+          <td data-row="4" data-col="5" class="number"></td>
+        </tr>
+        <tr>
+          <td data-row="5" data-col="1" class="number"></td>
+          <td data-row="5" data-col="2" class="number"></td>
+          <td data-row="5" data-col="3" class="number"></td>
+          <td data-row="5" data-col="4" class="number"></td>
+          <td data-row="5" data-col="5" class="number"></td>
+        </tr>
+      </table>
+      <!-- <button class="start2">びんご！！</button> -->
+      <input type="text" name="" id="showed_numbers" readonly>
+      <!-- <button class="reset">りせっと！！</button> -->
+      <p>
+        今まで選ばれた数
+      </p>
+      <textarea name="" id="diced-numbers" cols="30" rows="10" readonly></textarea>
+      <p>現在<span class="try-cnt">0</span>回目</p>
+      <p>現在<span class="hit-cnt">0</span>個ヒット！！！</p>(<span class="hit-rate">0</span>%)
+    
+      <p class="text-info py-1">
+        現在のリーチ: <span class="reach-cnt">0</span>個
+      </p>
+    
+    
+      <p class="bingo"></p>
+    </div>
 
-
-  <p class="bingo"></p>
+  </div>
 
 </body>
 
