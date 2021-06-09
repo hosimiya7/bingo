@@ -5,7 +5,7 @@ $(document).ready(function () {
   bingo.initializeDashboard(2)
 
   $(".start").on("click", function () {
-    bingo.roll()
+    bingo.rolls()
   })
 
   $(".reset").on("click", function () {
@@ -21,7 +21,8 @@ class Bingo {
   hit_sheet1 = []
   hit_sheet2 = []
   cur_count = 0
-  hit_count = 0
+  hit_count1 = 0
+  hit_count2 = 0
 
   constructor() {
     this.initializeUnselectedNumbers()
@@ -57,20 +58,24 @@ class Bingo {
     $('td').removeClass('hit-number')
     $('#diced-numbers').text("")
     $('.try-cnt').text(0)
-    $('.reach-cnt').text(0)
-    $('.hit-cnt').text(0)
+    $('[class^="reach-cnt"]').text("")
+    $('[class^="hit-cnt"]').text(0)
     $('.hit-rate').text(0)
-    $('.bingo').text("")
+    $('[class^="bingo-text"]').text("")
     $('.start').attr('disabled', false)
   }
 
-  isBingo = () => {
-    return this.countLineSum(5) > 0;
+  isBingo = (hit_sheet_num) => {
+    return this.countLineSum(5, hit_sheet_num) > 0;
   }
 
   judgeBingo = () => {
-    if (this.isBingo()) {
-      $('.bingo').text('BINGOoooooo!!!!!')
+    if (this.isBingo(1)) {
+      $('.bingo-text1').text('BINGOoooooo!!!!!')
+      $('.start').attr('disabled', true)
+    }
+    if (this.isBingo(2)) {
+      $('.bingo-text2').text('BINGOoooooo!!!!!')
       $('.start').attr('disabled', true)
     }
   }
@@ -95,15 +100,16 @@ class Bingo {
     this.initializeUnselectedNumbers()
   }
 
-  countReach = () => {
-    return this.countLineSum(4);
+  countReach = (hit_sheet_num) => {
+    return this.countLineSum(4, hit_sheet_num);
   }
 
   /**
    * リーチの数の表示
    */
   setReachCount = () => {
-    $('.reach-cnt').text(this.countReach())
+    $('.reach-cnt1').text(this.countReach(1))
+    $('.reach-cnt2').text(this.countReach(2))
   }
 
   setTryCount = () => {
@@ -111,10 +117,11 @@ class Bingo {
   }
 
   setHitCount = () => {
-    $('.hit-cnt').text(this.hit_count)
+    $('.hit-cnt1').text(this.hit_count1)
+    $('.hit-cnt2').text(this.hit_count2)
     // レート
-    $('.hit-rate').text(parseInt((this.hit_count / this.cur_count) * 100))
-
+    $('.hit-rate1').text(parseInt((this.hit_count1 / this.cur_count) * 100))
+    $('.hit-rate2').text(parseInt((this.hit_count2 / this.cur_count) * 100))
   }
 
   setDicedNumbers = () => {
@@ -123,18 +130,13 @@ class Bingo {
   setCurCount = () => {
     $('.try-cnt').text(this.cur_count)
   }
-  setHitCount = () => {
-    $('.hit-cnt').text(this.hit_count)
-    // レート
-    $('.hit-rate').text(parseInt((this.hit_count / this.cur_count) * 100))
-
-  }
 
   countLineSum = (judgeline, hit_sheet_num) => {
     let judged_count = 0
     let upper_left_count = 0
     let upper_right_count = 0
     const hit_sheet = hit_sheet_num === 1 ? this.hit_sheet1 : this.hit_sheet2
+
     for (let row = 0; row < 5; row++) {
       // 行
       const row_total = hit_sheet[row].reduce((sum, element) => {
@@ -163,29 +165,36 @@ class Bingo {
         judged_count++
       }
     }
-
     return judged_count;
   }
 
-
-  roll = function (hit_sheet_num) {
-    const hit_sheet = hit_sheet_num === 1 ? this.hit_sheet1 : this.hit_sheet2
-    this.cur_count++
+  rolls = function(){
     const number = this.getRandomNumber()
+    this.cur_count++
 
-    const $element = $(`[data-value=${number}]`)
+    this.roll(1, number)
+    this.roll(2, number)
+  }
+
+  roll = function (hit_sheet_num, number) {
+    const $element = $(`.bingo${hit_sheet_num} [data-value=${number}]`)
     const $showed_numbers = $("#showed_numbers")
     $showed_numbers.val(number)
 
-    if ($element.length) {
-      this.hit_count++
+    if ($element.length > 0) {
       $element.addClass("hit-number")
       const row_idx = $element.data('row') - 1
       const col_idx = $element.data('col') - 1
-      hit_sheet[row_idx][col_idx] = 1
-
+      
+      if(hit_sheet_num === 1){
+        this.hit_count1++
+        this.hit_sheet1[row_idx][col_idx] = 1
+      }
+      if(hit_sheet_num === 2){
+        this.hit_count2++
+        this.hit_sheet2[row_idx][col_idx] = 1
+      }
     }
-
 
     this.setDicedNumbers()
     this.setCurCount()
