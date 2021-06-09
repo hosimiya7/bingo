@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAA;EACP,gBAAgB,EAAE,UAAU;CAC7B;;AAED,AAAA,KAAK,CAAA;EACH,OAAO,EAAE,IAAI;CACd;;AAED,AAAA,OAAO,CAAA;EACL,MAAM,EAAE,GAAG;CACZ;;AAED,AAAA,OAAO,CAAA;EACL,MAAM,EAAE,GAAG;CACZ",
+    "sources": [
+        "bingo.scss"
+    ],
+    "names": [],
+    "file": "bingo.css"
+}

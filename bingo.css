@@ -1,15 +1,18 @@
-.hit-number{
+.hit-number {
   background-color: aquamarine;
 }
 
-.flex{
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
-.bingo1{
+.bingo1 {
   margin: 1em;
 }
 
-.bingo2{
+.bingo2 {
   margin: 1em;
 }
+/*# sourceMappingURL=bingo.css.map */
