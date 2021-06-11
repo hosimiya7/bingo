@@ -15,4 +15,8 @@
 .bingo2 {
   margin: 1em;
 }
+
+.selected {
+  background-color: #bb4141;
+}
 /*# sourceMappingURL=bingo.css.map */

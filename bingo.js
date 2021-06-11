@@ -1,17 +1,18 @@
 $(document).ready(function () {
 
   const bingo = new Bingo
-  bingo.initializeDashboard(1)
-  bingo.initializeDashboard(2)
+
+  bingo.reset()
 
   $(".start").on("click", function () {
     bingo.rolls()
   })
-
   $(".reset").on("click", function () {
     bingo.reset()
   })
-
+  $(".selectable").on("click", function (e) {
+    bingo.selected($(e.target))
+  })
 })
 
 class Bingo {
@@ -23,6 +24,7 @@ class Bingo {
   cur_count = 0
   hit_count1 = 0
   hit_count2 = 0
+  selexted_panel = 0
 
   constructor() {
     this.initializeUnselectedNumbers()
@@ -51,18 +53,32 @@ class Bingo {
   initialize = function () {
     this.cur_count = 0
     this.hit_count = 0
+    this.selected_panel = 0
 
     this.initializeUnselectedNumbers()
 
     $("#showed_numbers").val("")
     $('td').removeClass('hit-number')
+    $('.selectable').removeClass('selected')
     $('#diced-numbers').text("")
     $('.try-cnt').text(0)
     $('[class^="reach-cnt"]').text("")
     $('[class^="hit-cnt"]').text(0)
-    $('.hit-rate').text(0)
+    $('[class^="hit-rate"]').text(0)
     $('[class^="bingo-text"]').text("")
+    $('.start').attr('disabled', true)
+    $('.selectable').attr('disabled', false)
+    $('.selected-bingo').text("")
+    $('.win-lose').text("")
+
+  }
+
+  selected = ($selected) => {
+    $($selected).addClass('selected')
+    $('.selectable').attr('disabled', true)
+    $('.selected-bingo').text($selected.text())
     $('.start').attr('disabled', false)
+    this.selected_panel = $selected.data('panel')
   }
 
   isBingo = (hit_sheet_num) => {
@@ -73,10 +89,20 @@ class Bingo {
     if (this.isBingo(1)) {
       $('.bingo-text1').text('BINGOoooooo!!!!!')
       $('.start').attr('disabled', true)
+      if(this.selected_panel === 1){
+        $('.win-lose').text('You Win')
+      }else{
+        $('.win-lose').text('You Lose')
+      }
     }
     if (this.isBingo(2)) {
       $('.bingo-text2').text('BINGOoooooo!!!!!')
       $('.start').attr('disabled', true)
+      if(this.selected_panel === 2){
+        $('.win-lose').text('You Win')
+      }else{
+        $('.win-lose').text('You Lose')
+      }
     }
   }
 
