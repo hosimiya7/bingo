@@ -1,5 +1,16 @@
+$main-color: rgb(255, 251, 5);
+
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: 2em;
+  letter-spacing: 1.8px;
+  text-align: center;
+}
+
 .hit-number{
-    background-color: aquamarine;
+    background-color: $main-color;
   }
   
   .flex{
@@ -13,7 +24,24 @@
   .bingo2{
     margin: 1em;
   }
-
   .selected{
-    background-color: rgb(187, 65, 65);
+    background-color: $main-color;
+  }
+
+  .bingo-wrapper{
+    position: relative;
+  }
+
+  .win-lose{
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    font-size: 6em;
+    transform: rotate(-20deg);
+  }
+  .win{
+    color: rgb(221, 53, 53);
+  }
+  .lose{
+    color: rgb(5, 42, 255);
   }

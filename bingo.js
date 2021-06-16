@@ -69,8 +69,7 @@ class Bingo {
     $('.start').attr('disabled', true)
     $('.selectable').attr('disabled', false)
     $('.selected-bingo').text("")
-    $('.win-lose').text("")
-
+    $('.win-lose').text("").removeClass('win').removeClass('lose')
   }
 
   selected = ($selected) => {
@@ -90,18 +89,18 @@ class Bingo {
       $('.bingo-text1').text('BINGOoooooo!!!!!')
       $('.start').attr('disabled', true)
       if(this.selected_panel === 1){
-        $('.win-lose').text('You Win')
+        $('.win-lose').text('You Win').addClass('win')
       }else{
-        $('.win-lose').text('You Lose')
+        $('.win-lose').text('You Lose').addClass('lose')
       }
     }
     if (this.isBingo(2)) {
       $('.bingo-text2').text('BINGOoooooo!!!!!')
       $('.start').attr('disabled', true)
       if(this.selected_panel === 2){
-        $('.win-lose').text('You Win')
+        $('.win-lose').text('You Win').addClass('win')
       }else{
-        $('.win-lose').text('You Lose')
+        $('.win-lose').text('You Lose').addClass('lose')
       }
     }
   }

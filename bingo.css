@@ -1,5 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: 2em;
+  letter-spacing: 1.8px;
+  text-align: center;
+}
+
 .hit-number {
-  background-color: aquamarine;
+  background-color: #fffb05;
 }
 
 .flex {
@@ -17,6 +26,27 @@
 }
 
 .selected {
-  background-color: #bb4141;
+  background-color: #fffb05;
+}
+
+.bingo-wrapper {
+  position: relative;
+}
+
+.win-lose {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  font-size: 6em;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+
+.win {
+  color: #dd3535;
+}
+
+.lose {
+  color: #052aff;
 }
 /*# sourceMappingURL=bingo.css.map */

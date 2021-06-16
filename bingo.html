@@ -8,13 +8,11 @@
   <link rel="stylesheet" href="bingo.css">
   <title>bingo</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
-  <!-- <script src="bingo.js" defer></script> -->
   <script src="bingo.js" defer></script>
 </head>
 
 <body>
-  <div class="flex">
-
+  <div class="flex bingo-wrapper">
     <div class="bingo1">
       <table>
         <tr>
@@ -69,7 +67,7 @@
       <p>
         今まで選ばれた数
       </p>
-      <textarea name="" id="diced-numbers" cols="30" rows="10" readonly></textarea>
+      <textarea name="" id="diced-numbers" cols="30" rows="10" readonly class="diced-number"></textarea>
       <br>
       <div class="flex">
         <button class="selectable" data-panel="1">Bingo 1</button>
