@@ -83,7 +83,10 @@ class Bingo {
   isBingo = (hit_sheet_num) => {
     return this.countLineSum(5, hit_sheet_num) > 0;
   }
-
+  
+  /**
+   * ビンゴかどうか判定する
+   */
   judgeBingo = () => {
     if (this.isBingo(1)) {
       $('.bingo-text1').text('BINGOoooooo!!!!!')
